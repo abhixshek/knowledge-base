@@ -1,0 +1,197 @@
+{
+  "main": {
+    "id": "cc0904d4b28e87bb",
+    "type": "split",
+    "children": [
+      {
+        "id": "0106e63756fd34e3",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "604f4682b119426b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Regular expressions (regex patterns).md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "c71fff50aff80ee2",
+    "type": "split",
+    "children": [
+      {
+        "id": "b892a833b89df928",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "3c0cd8c6d7d812c0",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "ceb30b049e43f38a",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": true,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "2ae1b55c28895a11",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 307.5
+  },
+  "right": {
+    "id": "9b38c31cf3b8383c",
+    "type": "split",
+    "children": [
+      {
+        "id": "399f87469dfb68d7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "0f998fa617029882",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Regular expressions (regex patterns).md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": true,
+                "searchQuery": "",
+                "backlinkCollapsed": true,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "871a6043039d7f36",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Regular expressions (regex patterns).md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "a824d2c7ee6ab9ff",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "469c0cfedafc8ba2",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Regular expressions (regex patterns).md"
+              }
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "604f4682b119426b",
+  "lastOpenFiles": [
+    "README.md",
+    "py_os.md",
+    "py_sys.md",
+    "python-standard-library/Regular expressions (regex patterns).md",
+    "Regular expressions (regex patterns).md",
+    "find-out.md",
+    "MAP-to-follow.md",
+    "Learning-python.md",
+    "git.md",
+    "ubuntu.md",
+    "code/logs/logger7.log",
+    "code/logs/logger6.log",
+    "code/logs/logger5.log",
+    "code/logs/logger4.log",
+    "code/logs/logger3.log",
+    "code/logs/logger2.log",
+    "code/logs/logger1.log",
+    "code/logs",
+    "code/logs/logger{4...7}.log",
+    "Attachments/Pasted image 20230404133509.png",
+    "regexes_copy/regex0.py",
+    "python-packaging/python-PyPI-packages.md",
+    "Attachments/Pasted image 20230402184730.png",
+    "python-standard-library/import sys.md",
+    "python-standard-library/import os.md",
+    "python-packaging/README.md",
+    "Attachments/Pasted image 20230402163455.png",
+    "Attachments/Pasted image 20230402142636.png",
+    "Attachments/Pasted image 20230402000856.png",
+    "python_packaging/python-PyPI-packages.md",
+    "Attachments/Pasted image 20230402000829.png",
+    "Attachments/Pasted image 20230401235431.png",
+    "Attachments/Pasted image 20230401234821.png",
+    "Attachments/Pasted image 20230401234743.png",
+    "Attachments/Pasted image 20230401230012.png",
+    "code/README.md",
+    "dictionary.md",
+    "lists.md",
+    "strings.md",
+    "code/another_file.md",
+    "got.md",
+    "this.md",
+    "ok.md",
+    "kb_python/find out.md"
+  ]
+}

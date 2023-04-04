@@ -1,0 +1,8 @@
+code/
+
+__pycache__/
+
+.idea/
+
+python-packaging/
+
