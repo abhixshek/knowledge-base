@@ -226,6 +226,8 @@ after a ==-m== flag, like this:
 
 Every time you perform a commit, you’re recording a snapshot of your project that you can revert to or compare to later.
 
+**Pro Tip:** Keep your messages relatively short, but be descriptive!
+
 **Skipping the staging area:**
 `$git commit -a -m 'added new benchmarks'`
 Adding the -a option to the git commit command makes Git automatically stage every file **that is already tracked** before doing the commit, letting you skip the `git add` part.
@@ -256,6 +258,168 @@ the `.log` extension in the `log/` directory.
 `$git rm \*~`
 This command removes all files whose names end with a `~`
 
+---
+Unlike many other VCSs, Git doesn’t explicitly track file movement. If you rename a file in Git, no
+metadata is stored in Git that tells it you renamed the file. However, Git is pretty smart about
+figuring that out after the fact — we’ll deal with detecting file movement a bit later.
+Thus it’s a bit confusing that Git has a mv command. If you want to rename a file in Git, you can run
+something like:
+`$git mv file_from file_to`
+and it works fine. In fact, if you run something like this:
+`$git rm README.md README`
+and look at the status, you’ll see that Git
+considers it a renamed file:
+![[Pasted image 20230404141052.png]]
+However, this is equivalent to running something like this:
+`$mv README.md README`
+`$git rm README.md`
+`$git add README`
+Git figures out that it’s a rename implicitly, so it doesn’t matter if you rename a file that way or with
+the mv command. The only real difference is that git mv is one command instead of three — it’s a
+convenience function. More importantly, you can use any tool you like to rename a file, and address the add/rm later, before you commit.
+
+---
+
+### Working with remotes:
+To be able to collaborate on any Git project, you need to know how to manage your remote repositories. Remote repositories are versions of your project that are hosted on the Internet or
+network somewhere. You can have several of them, each of which generally is either read-only or
+read/write for you. Collaborating with others involves managing these remote repositories and
+pushing and pulling data to and from them when you need to share work. Managing remote
+repositories includes knowing how to add remote repositories, remove remotes that are no longer
+valid, manage various remote branches and define them as being tracked or not, and more.
+
+>[!INFO]
+>It is entirely possible that you can be working with a “remote” repository that is, infact, on the same host you are. **The word “remote” does not necessarily imply that the repository is somewhere else on the network or Internet, only that it is elsewhere.** Working with such a remote repository would still involve all the standard pushing, pulling and fetching operations as with any other remote.
+
+To see which remote servers you have configured, you can run the `git remote` command. It lists the
+shortnames of each remote handle you’ve specified. If you’ve cloned your repository, you should at
+least see **origin** — **that is the default name Git gives to the server you cloned from**:
+```
+$git remote
+origin
+```
+
+You can also specify ==-v==, which shows you the URLs that Git has stored for the shortname to be used
+when reading and writing to that remote:
+```
+$git remote -v
+origin  https://github.com/abhixshek/kb-python-code.git (fetch)
+origin  https://github.com/abhixshek/kb-python-code.git (push)
+```
+
+If you have more than one remote, the command lists them all. For example, a repository with
+multiple remotes for working with several collaborators might look something like this.
+
+![[Pasted image 20230404160326.png]]
+This means we can pull contributions from any of these users pretty easily. We may additionally
+have permission to push to one or more of these, though we can’t tell that here.
+
+**git clone** command implicitly adds the **origin remote** for you.
+Here’s how to add a new remote explicitly. To add a new remote Git repository as a shortname you can reference easily, run:
+`$git remote add <shortname> <url>`
+![[Pasted image 20230404183142.png]]
+Now you can use the string pb on the command line in lieu of the whole URL. For example, if you
+want to fetch all the information that Paul has but that you don’t yet have in your repository, you
+can run `$git fetch pb`:
+![[Pasted image 20230404183225.png]]
+Paul’s master branch is now accessible locally as pb/master — you can merge it into one of your
+branches, or you can check out a local branch at that point if you want to inspect it. We’ll go over
+what branches are and how to use them later.
+
+### Tagging:
+Like most VCSs, Git has the ability to tag specific points in a repository’s history as being important.
+Typically, people use this functionality to mark release points (v1.0, v2.0 and so on).
+
+Listing the existing tags in Git is straightforward. Just type `git tag` (with optional ==-l== or ==--list==):
+```
+$git tag
+v1.0
+v2.0
+```
+**This command lists the tags in alphabetical order; the order in which they are displayed has no real importance.**
+
+You can also search for tags that match a particular pattern. The Git source repo, for instance,
+contains more than 500 tags. If you’re interested only in looking at the 1.8.5 series, you can run this:
+```
+$git tag -l "v1.8.5*"
+v1.8.5
+v1.8.5-rc0
+v1.8.5-rc1
+v1.8.5-rc2
+v1.8.5-rc3
+v1.8.5.1
+v1.8.5.2
+v1.8.5.3
+v1.8.5.4
+v1.8.5.5
+```
+
+**NOTE:** rc means release candidate. It is a version of a software program that is still being tested, but is ready to be released. If no major issues are found in the release candidate, then it is released to the public. RC is made available for "last minute testing" purposes to detect any remaining errors within the program.
+
+**NOTE:** listing only the tags matching your pattern requires the `-l` or `--list` option. If you want to list all tags then running `git tag` is sufficient and `-l` is not a must. 
+
+Git supports two types of tags: *lightweight and annotated.*
+A **lightweight tag** is very much like a branch that doesn’t change — it’s just a pointer to a specific
+commit.
+**Annotated tags**, however, are stored as full objects in the Git database. They’re checksummed;
+contain the tagger name, email, and date; have a tagging message; and can be signed and verified
+with GNU Privacy Guard (GPG).
+**It’s generally recommended that you create annotated tags so you can have all this information**; but if you want a temporary tag or for some reason don’t want to keep the other information, lightweight tags are available too.
+
+To create an annotated tag, provide the ==-a== flag with the `tag` command:
+`$git tag -a v1.4 -m "my version 1.4"`
+The ==-m== specifies a tagging message, which is stored with the tag. If you don’t specify a message for
+an annotated tag, Git launches your editor so you can type it in.
+
+**NOTE:** numbers, letters and dot is allowed in naming of tag. You can use other special characters like $, & and brackets if you escape them using backslash like:
+```
+$git tag -a v1.\$453\&3\(2\) -m 'same'
+$git tag
+123qwe
+v1.$45&3(2)
+v1.$453&3(2)
+v1.3(2)
+v1.4
+v1.5
+
+```
+
+You can see the tag data along with the commit that was tagged by using the `git show` command:
+`$git show v1.4`
+![[Pasted image 20230407232506.png]]
+Shows the tagger information, the date the commit was tagged, and the annotation message
+before showing the commit information.
+
+Another way to tag commits is with a lightweight tag. This is basically the commit checksum stored
+in a file — no other information is kept. To create a lightweight tag, don’t supply any of the -a, -s, or -m options, just provide a tag name:
+`$git tag v1.2.5-rc`
+
+```
+$git show v1.2.5-rc
+commit ca82a6dff817ec66f44342007202690a93763949
+Author: Scott Chacon <schacon@gee-mail.com>
+Date:   Mon Mar 17 21:52:11 2008 -0700
+
+  Change version number
+```
+**NOTICE** this time git show doesn't show tagger information, just the commit information unlike annotated tag which showed tagger info as well. 
+
+You can also tag commits after you’ve moved past them. Suppose your commit history looks like
+this:
+
+
+---
+>[!INFO]
+>**How do I remove version tracking from a project cloned from git?**  
+>`$rm -rf .git` should suffice. That will blow away all Git-related information.  
+>  
+>It will remove all Git state from your checkout. No branches, no history, no remotes, nothing at all. All of that stuff is stored in the `.git` directory. Without it, you literally don't have a git repository anymore. 
+>After removing what you are left with is the working copy. So lets say you had made some changes with were not committed will stay there after you delete `.git`  
+>You can run `git init` to create a fresh repository.
+
+## Git Branching:
+
+
 
 
 
@@ -269,6 +433,7 @@ This command removes all files whose names end with a `~`
 
 ![[Pasted image 20230401230012.png]]
 
+## GitHub
 
 ![[Pasted image 20230401234743.png]]
 ![[Pasted image 20230401234821.png]]

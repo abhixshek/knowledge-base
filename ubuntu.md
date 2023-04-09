@@ -257,6 +257,17 @@ Basically, vi has 2 different modes: Command and Insert modes:
 - **Insert Mode**: This mode allows you to insert text into the file.
 
 By default, vi opens with the command mode activated. In order to switch to the insert mode, you will have to type the character **i**.
+When you go into the insert mode, you will see -- INSERT -- at the bottom left corner of the editor. 
+To exit the insert mode, press ESC. You will see the -- INSERT -- prompt dissappear.
+Once back into the command mode, you save to enter `:wq` to save the file and exit the editor. 
+w stands for write ,q stands for quit.
+To exit the editor when you haven't made any changes , `:q` will do. But when you did modify the contents of the file and want to exit without saving it, you have to enter` :q!` , which basically ignores your changes and force exits.
+
+**NOTE:** You can copy paste ctrl c and ctrl v in the vi text editor. Just remember you need to be in the insert mode to do so.
+
+>[!INFO]
+>To display line numbers in vi insert mode, pass the command `:set number`  or  `:set nu`
+>To turn it off, pass `:set nonumber`   or   `:set nonu`
 
 
 
@@ -277,6 +288,13 @@ By default, vi opens with the command mode activated. In order to switch to th
 
 ````bash
 $echo 'special characters / $ % ^ * @ & \ in this line. line added using echo' >> file_created_using_echo.txt
+
+$cat file_created_using_echo.txt
+this file was created using the echo command, like this: "echo [content] > [filename]"
+this new line was added using: echo [new_line] >> [filename]
+message in double quotes
+special characters / $ % ^ * @ & \ in this line. line added using echo
+
 ````
 
 **NOTE:** if you echo using `>`  a line to a file already having some content then its content will be overwritten by the echo command run because of single `>` instead of `>>` (which means to append).
