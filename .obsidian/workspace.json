@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "0106e63756fd34e3",
+        "id": "e54fc8c9250929b7",
         "type": "tabs",
         "children": [
           {
-            "id": "604f4682b119426b",
+            "id": "6dce4f406bf7a5e8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Regular expressions (regex patterns).md",
+                "file": "git.md",
                 "mode": "source",
                 "source": false
               }
@@ -51,7 +51,7 @@
                 "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
-                "collapseAll": false,
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Regular expressions (regex patterns).md",
+                "file": "git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Regular expressions (regex patterns).md",
+                "file": "git.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Regular expressions (regex patterns).md"
+                "file": "git.md"
               }
             }
           }
@@ -147,18 +147,27 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "604f4682b119426b",
+  "active": "6dce4f406bf7a5e8",
   "lastOpenFiles": [
-    "README.md",
+    "Docker.md",
+    "ubuntu.md",
+    "git.md",
     "py_os.md",
     "py_sys.md",
-    "python-standard-library/Regular expressions (regex patterns).md",
-    "Regular expressions (regex patterns).md",
-    "find-out.md",
-    "MAP-to-follow.md",
     "Learning-python.md",
-    "git.md",
-    "ubuntu.md",
+    "Attachments/Pasted image 20230407232506.png",
+    "Attachments/Pasted image 20230407232434.png",
+    "code/README.md~",
+    "Attachments/Pasted image 20230404183225.png",
+    "Attachments/Pasted image 20230404183142.png",
+    "Attachments/Pasted image 20230404160326.png",
+    "Attachments/Pasted image 20230404141052.png",
+    "lists.md",
+    "MAP-to-follow.md",
+    "README.md",
+    "Regular expressions (regex patterns).md",
+    "python-standard-library/Regular expressions (regex patterns).md",
+    "find-out.md",
     "code/logs/logger7.log",
     "code/logs/logger6.log",
     "code/logs/logger5.log",
@@ -169,7 +178,6 @@
     "code/logs",
     "code/logs/logger{4...7}.log",
     "Attachments/Pasted image 20230404133509.png",
-    "regexes_copy/regex0.py",
     "python-packaging/python-PyPI-packages.md",
     "Attachments/Pasted image 20230402184730.png",
     "python-standard-library/import sys.md",
@@ -177,16 +185,9 @@
     "python-packaging/README.md",
     "Attachments/Pasted image 20230402163455.png",
     "Attachments/Pasted image 20230402142636.png",
-    "Attachments/Pasted image 20230402000856.png",
     "python_packaging/python-PyPI-packages.md",
-    "Attachments/Pasted image 20230402000829.png",
-    "Attachments/Pasted image 20230401235431.png",
-    "Attachments/Pasted image 20230401234821.png",
-    "Attachments/Pasted image 20230401234743.png",
-    "Attachments/Pasted image 20230401230012.png",
     "code/README.md",
     "dictionary.md",
-    "lists.md",
     "strings.md",
     "code/another_file.md",
     "got.md",

@@ -1,6 +1,6 @@
 {
-  "accentColor": "#b5a7e6",
   "theme": "obsidian",
   "translucency": false,
-  "baseFontSize": 16
+  "baseFontSize": 16,
+  "accentColor": "#b5a7e6"
 }

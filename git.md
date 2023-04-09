@@ -406,6 +406,47 @@ Date:   Mon Mar 17 21:52:11 2008 -0700
 
 You can also tag commits after you’ve moved past them. Suppose your commit history looks like
 this:
+```
+$git log --pretty=oneline
+0c943c3aef2d21ecf17936a0e333cd8ea8aab171 (HEAD -> master, tag: v1.5, origin/master) regexes learning
+af8fd4199061be7a120cfd5f4550176b37d018e3 (new_branch) double echo to a file
+06b5ca809efae9e7aa8ead8e410c5fb6ac4f5316 .gitignore file studied and ready
+84be232801e1aa7306959023580f2b64777720ae added to README
+4aca8b8aa055417657aa56c3f879bba833368e83 numeric types
+43812dbc7a6444869260557caa9814dba353b0f8 updated readme
+c9eadaf8014f442d3fcd118728e02cd006bfa855 updated readme
+f9958fe102fd489361628fb34e6220efe67021b4 updated readme
+c7bff3d49367e6b954446beef9f6dd29223b94ff updated readme
+22efb28c9e224030943de9fefa2223c047e19543 numeric types
+c831abc2fdf3c16256881dc4381029e15b576ffb understanding imports
+8e4edd9cc6602a842d735dbfea4548f39cbcf538 scripts 2,3
+8160ab6db518eea5734612b0d3d649236242c95e added readme file
+f44fdc9224e8c502516736c96e117ae6c55a0822 first commit
+
+```
+Lets say you wanted to tag "added readme file" commit and now you are several commits past it. 
+You can still tag it:
+`$git tag -a v1.1.0 8160ab6`
+
+```bash
+$git tag
+v1.1.0
+v1.5
+
+$git show v1.1.0
+tag v1.1.0
+Tagger: abhixshek <abhishek.dce.2000@gmail.com>
+Date:   Sun Apr 9 12:19:25 2023 +0530
+
+tagged later using commit id
+
+commit 8160ab6db518eea5734612b0d3d649236242c95e (tag: v1.1.0)
+Author: abhixshek <abhishek.dce.2000@gmail.com>
+Date:   Mon Mar 6 01:04:34 2023 +0530
+
+  added readme file
+
+```
 
 
 ---
