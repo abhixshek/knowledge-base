@@ -5,7 +5,7 @@
 **Where do containers live?**
 Containers can be hosted/uploaded to online container repository. 
 Companies maintain their own private repositories.
-There is also a public repository of Docker. 
+There is also a public repository of Docker called Docker Hub.
 
 What was the story of software **development** before Containers?
 Developer A is on a mac. Developer B is on linux. 
@@ -30,11 +30,13 @@ This means **no environmental configuration needed on the server**. - except Doc
 ![[Pasted image 20230409002253.png]]
 
 **What is a Container, technically?** 
-Its a **layer of images** where the **base image** is mostly a linux distribution, example alpine or any debian based distro. But it is important that the base image be small so it is mostly a linux distribution rather a windows/mac. 
+Its a **layer of images** where the **base image** is mostly a linux distribution, example alpine or any debian based distro. But it is important that the base image be small (so that docker container as a result is small and lighweight) so it is mostly a linux distribution rather a windows/mac. 
 The base image is followed by other dependency images and finally the application image at the top. 
 ```
-application
+application image
+configurations 2
 dependency2
+configurations 1 
 dependency1
 base image: alpine
 ```
@@ -50,7 +52,7 @@ base image: alpine
 ```
 $docker pull postgres:10.10
 $docker pull postgres:9.6
-$docker ps
+$docker ps  #shows all the running containers
 ```
 
 
@@ -72,4 +74,6 @@ Docker virtualises the applications layer of the host and interact/use the kerne
 Docker image is much smaller in size. (MBs) | VM images can be as large as couple of GBs.
 Docker containers start and run much faster. | VM machine has to start the whole OS and then the applications.
 Docker image of different OS is usually not compatible with a different OS. (fix is Docker toolbox)| VM of any OS can run on any OS host
+
+
 

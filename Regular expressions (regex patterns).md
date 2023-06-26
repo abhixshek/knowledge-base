@@ -47,6 +47,32 @@ The first metacharacters we’ll look at are `[` and `]`. They’re used for 
  >Perhaps the most important metacharacter is the backslash, `\`. As in Python string literals, the backslash can be followed by various characters to signal various special sequences. It’s also used to escape all the metacharacters so you can still match them in patterns; for example, if you need to match a `[` or `\`, you can precede them with a backslash to remove their special meaning: `\[` or `\\`.
  >
  >Some of the special sequences beginning with `'\'` represent predefined sets of characters that are often useful, such as the set of digits, the set of letters, or the set of anything that isn’t whitespace.
+ >
+ >Let’s take an example: `\w` matches any alphanumeric character. If the regex pattern is expressed in bytes, this is equivalent to the class `[a-zA-Z0-9_]`. If the regex pattern is a string, `\w` will match all the characters marked as letters in the Unicode database provided by the [`unicodedata`](https://docs.python.org/3/library/unicodedata.html#module-unicodedata "unicodedata: Access the Unicode Database.") module. You can use the more restricted definition of `\w` in a string pattern by supplying the [`re.ASCII`](https://docs.python.org/3/library/re.html#re.ASCII "re.ASCII") flag when compiling the regular expression.
+ >
+ >The following list of special sequences isn’t complete. For a complete list of sequences and expanded class definitions for Unicode string patterns, see the last part of [Regular Expression Syntax](https://docs.python.org/3/library/re.html#re-syntax) in the Standard Library reference. In general, the Unicode versions match any character that’s in the appropriate category in the Unicode database.
+ >`\d`
+ >Matches any decimal digit; this is equivalent to the class `[0-9]`.
+ >
+ >`\D`
+ >Matches any non-digit character; this is equivalent to the class `[^0-9]`.
+ >
+ >`\s`
+ >Matches any whitespace character; this is equivalent to the class `[ \t\n\r\f\v]`.
+ >
+ >`\S`
+ >Matches any non-whitespace character; this is equivalent to the class `[^ \t\n\r\f\v]`.
+ >
+ >`\w`
+ >Matches any alphanumeric character; this is equivalent to the class `[a-zA-Z0-9_]`.
+ >
+ >`\W`
+ >Matches any non-alphanumeric character; this is equivalent to the class `[^a-zA-Z0-9_]`.
+ > 
+ >The final metacharacter in this section is `.`. It matches anything except a newline character, and there’s an alternate mode ([`re.DOTALL`](https://docs.python.org/3/library/re.html#re.DOTALL "re.DOTALL")) where it will match even a newline. `.` is often used where you want to match “any character”. 
+ 
+ 
+ 
 
 ---
 The special characters are:
@@ -83,6 +109,7 @@ The `'*'`, `'+'`, and `'?'` quantifiers are all _greedy_; they match as muc
 
 >`*+`, `++`, `?+`
 >Like the `'*'`, `'+'`, and `'?'` quantifiers, those where `'+'` is appended also match as many times as possible. However, unlike the true greedy quantifiers, these do not allow back-tracking when the expression following it fails to match. These are known as _possessive_ quantifiers. For example, `a*a` will match `'aaaa'` because the `a*` will match all 4 `'a'`s, but, when the final `'a'` is encountered, the expression is backtracked so that in the end the `a*` ends up matching 3 `'a'`s total, and the fourth `'a'` is matched by the final `'a'`. However, when `a*+a` is used to match `'aaaa'`, the `a*+` will match all 4 `'a'`, but when the final `'a'` fails to find any more characters to match, the expression cannot be backtracked and will thus fail to match. `x*+`, `x++` and `x?+` are equivalent to `(?>x*)`, `(?>x+)` and `(?>x?)` correspondingly.
+>New in version 3.11.
 >(getting multiple repeat error in above trys. CHECK AGAIN)
 
 
@@ -101,5 +128,30 @@ Causes the resulting RE to match from _m_ to _n_ repetitions of the precedin
 >`{m,n}+`
 >Causes the resulting RE to match from _m_ to _n_ repetitions of the preceding RE, attempting to match as many repetitions as possible _without_ establishing any backtracking points. This is the possessive version of the quantifier above. For example, on the 6-character string `'aaaaaa'`, `a{3,5}+aa` attempt to match 5 `'a'` characters, then, requiring 2 more `'a'`s, will need more characters than available and thus fail, while `a{3,5}aa` will match with `a{3,5}` capturing 5, then 4 `'a'`s by backtracking and then the final 2 `'a'`s are matched by the final `aa` in the pattern. `x{m,n}+` is equivalent to `(?>x{m,n})`.
 >New in version 3.11.
+
+
+`\`
+
+Either escapes special characters (permitting you to match characters like `'*'`, `'?'`, and so forth), or signals a special sequence; special sequences are discussed below.
+
+If you’re not using a raw string to express the pattern, remember that Python also uses the backslash as an escape sequence in string literals; if the escape sequence isn’t recognized by Python’s parser, the backslash and subsequent character are included in the resulting string. However, if Python would recognize the resulting sequence, the backslash should be repeated twice. This is complicated and hard to understand, so it’s highly recommended that you use raw strings for all but the simplest expressions.
+
+`[]`
+
+Used to indicate a set of characters. In a set:
+
+-   Characters can be listed individually, e.g. `[amk]` will match `'a'`, `'m'`, or `'k'`.
+-   Ranges of characters can be indicated by giving two characters and separating them by a `'-'`, for example `[a-z]` will match any lowercase ASCII letter, `[0-5][0-9]` will match all the two-digits numbers from `00` to `59`, and `[0-9A-Fa-f]` will match any hexadecimal digit. If `-` is escaped (e.g. `[a\-z]`) or if it’s placed as the first or last character (e.g. `[-a]` or `[a-]`), it will match a literal `'-'`.
+-   Special characters lose their special meaning inside sets. For example, `[(+*)]` will match any of the literal characters `'('`, `'+'`, `'*'`, or `')'
+- Character classes such as `\w` or `\S` (defined below) are also accepted inside a set, although the characters they match depends on whether [`ASCII`](https://docs.python.org/3/library/re.html#re.ASCII "re.ASCII") or [`LOCALE`](https://docs.python.org/3/library/re.html#re.LOCALE "re.LOCALE") mode is in force.
+- Characters that are not within a range can be matched by _complementing_ the set. If the first character of the set is `'^'`, all the characters that are _not_ in the set will be matched. For example, `[^5]` will match any character except `'5'`, and `[^^]` will match any character except `'^'`. `^` has no special meaning if it’s not the first character in the set.
+- To match a literal `']'` inside a set, precede it with a backslash, or place it at the beginning of the set. For example, both `[()[\]{}]` and `[]()[{}]` will match a right bracket, as well as left bracket, braces, and parentheses.
+- Support of nested sets and set operations as in [Unicode Technical Standard #18](https://unicode.org/reports/tr18/) might be added in the future. This would change the syntax, so to facilitate this change a [`FutureWarning`](https://docs.python.org/3/library/exceptions.html#FutureWarning "FutureWarning") will be raised in ambiguous cases for the time being. That includes sets starting with a literal `'['` or containing literal character sequences `'--'`, `'&&'`, `'~~'`, and `'||'`. To avoid a warning escape them with a backslash.
+    Changed in version 3.7: [`FutureWarning`](https://docs.python.org/3/library/exceptions.html#FutureWarning "FutureWarning") is raised if a character set contains constructs that will change semantically in the future.
+
+
+`|`
+
+`A|B`, where _A_ and _B_ can be arbitrary REs, creates a regular expression that will match either _A_ or _B_. An arbitrary number of REs can be separated by the `'|'` in this way. This can be used inside groups (see below) as well. As the target string is scanned, REs separated by `'|'` are tried from left to right. When one pattern completely matches, that branch is accepted. This means that once _A_ matches, _B_ will not be tested further, even if it would produce a longer overall match. In other words, the `'|'` operator is never greedy. To match a literal `'|'`, use `\|`, or enclose it inside a character class, as in `[|]`.
 
 
