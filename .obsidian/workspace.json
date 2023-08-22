@@ -4,22 +4,35 @@
     "type": "split",
     "children": [
       {
-        "id": "aad0d85ea5483d95",
+        "id": "21ae0afc8aa3a4ea",
         "type": "tabs",
         "children": [
           {
-            "id": "6f52fd2875ef958e",
+            "id": "5bad1f0ba979e93e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ubuntu.md",
+                "file": "Reminders.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "e4185102b3d86fe5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Learning-python.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -48,7 +61,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "$git",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -93,7 +106,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "ubuntu.md",
+                "file": "Learning-python.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +123,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "ubuntu.md",
+                "file": "Learning-python.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -133,12 +146,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ubuntu.md"
+                "file": "Learning-python.md"
               }
             }
           },
           {
-            "id": "97a6875aae4efd8a",
+            "id": "e3f955a0ad329ccc",
             "type": "leaf",
             "state": {
               "type": "reminder-list",
@@ -163,11 +176,22 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "6f52fd2875ef958e",
+  "active": "e4185102b3d86fe5",
   "lastOpenFiles": [
-    "git.md",
-    "Docker.md",
+    "ubuntu.md",
     "Learning-python.md",
+    "lists.md",
+    "MAP-to-follow.md",
+    "git.md",
+    "Reminders.md",
+    "README.md",
+    "Regular expressions (regex patterns).md",
+    "Docker.md",
+    "find-out.md",
+    "Fluent python.md",
+    "dictionary.md",
+    "theme.css",
+    "manifest.json",
     "Attachments/Pasted image 20230616121339.png",
     "code/regexes/regex0.py",
     "code/regexes",
@@ -177,11 +201,6 @@
     "Attachments/Pasted image 20230616120720.png",
     "Attachments/Pasted image 20230616120341.png",
     "Attachments/Pasted image 20230616120117.png",
-    "MAP-to-follow.md",
-    "lists.md",
-    "Fluent python.md",
-    "find-out.md",
-    "dictionary.md",
     "code/python_obj_types.py~",
     "code/README.md~",
     "Attachments/Pasted image 20230609174653.png",
@@ -191,16 +210,10 @@
     "code/lis.h",
     "code/library.h",
     "Attachments/Pasted image 20230608211038.png",
-    "Regular expressions (regex patterns).md",
     "strings.md",
-    "Reminders.md",
-    "README.md",
-    "ubuntu.md",
     "py_os.md",
     "py_sys.md",
-    "code/regexes/regex0.py~",
     "python-standard-library/Regular expressions (regex patterns).md",
-    "code/logs/logger7.log",
     "python-packaging/python-PyPI-packages.md",
     "python-standard-library/import sys.md",
     "python-standard-library/import os.md",

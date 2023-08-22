@@ -1,15 +1,26 @@
 Python is a popular open source programming language used for both standalone programs and
 scripting applications in a wide variety of domains.
-`$` or `%`  or `C:\Python3>` are all examples of system prompt. 
 
 C, C++ and Java are compiled or statically typed programming languages. 
+
 Why people use python? - software quality, developer productivity, portability, support libraries, integration with other tools, fun, etc. 
+
+The concept of OOP is geared towards code reusability.
+
 In the Python way of thinking, **explicit is better than implicit**, and simple is better than complex.
 **"Premature abstraction is as bad as premature optimization"** - Fluent python book
 `>>>import this # gives the output of zen of python`
 In python community, “script” is used to describe a simpler top-level file and “program” to refer to a more sophisticated multifile application.
 
+The standard implementations of Python today compile (i.e., translate) source code statements to an intermediate format known as **byte code** and then interpret the byte code. Byte code provides portability, as it is a platform-independent format. However, because Python is not compiled all the way down to binary machine code (e.g., instructions for an Intel chip), some programs will run more slowly in Python than in a fully compiled language like C.
+acha, matlab compiled lang ka matlab hai ki your source code is converted all the way to the machine code(level). while python source code is converted to byte code and then this byte code is interpreted. i.e. python code does not convert to machine code in its standard implementation.
+Python’s speed-of-development gain is often far more important than any speed-of-execution loss, especially given modern computer speeds.
+
+Python is used heavily in systems programming(system administration tasks such as file, directory processing, running other programs, etc).
+It is also used for internet scripting, web development, game development, numeric programming, component integration, etc.
+
 ## Python's view of program execution:
+`$` or `%`  or `C:\Python3>` are all examples of system prompt. 
 your **source code** (the text statements in your .py file) is first converted to **byte code** and then routed to something called a "virtual machine".
 
 **Compilation is simply a translation step, and byte code is a lower-level, platform-independent representation of your source code.**
@@ -55,13 +66,13 @@ when using imports, you can access the third_level attributes in the first(top) 
 
 Objects are essentially just pieces of memory, with values and sets of associated operations.
 Python programs can be decomposed into **modules, statements, expressions, and objects.**
- 
+
 Even though, as we’ll see, there are no type declarations in Python, the syntax of the expressions you run determines the types of objects you create and use. 
 **NOTE:** The term literal simply means an expression whose syntax generates an object—sometimes also called a constant. Note that the term “constant” does not imply objects or variables that can never be changed (i.e., this term is unrelated to C++’s const or Python’s “immutable”.
 
 **Python's core data types:**
 ![[Pasted image 20221030142108.png]]
-**NOTE:** dictionaries are also known as search tables. Lists are also known as collections. 
+**NOTE:** dictionaries are also known as search tables or mappings. Lists are also known as collections. 
 
 Just as importantly, once you create an object, you bind its operation set for all time—
 you can perform only string operations on a string and list operations on a list.
@@ -73,7 +84,7 @@ integers, floats, complex, fixed precision decimals, rational numbers, fractions
     >>>type(5+4j)
     <class 'complex'>
 
-for exponentiation operation, use `**`
+for exponentiation operation, use `**` , usual operations ofcourse are `+,-,*,/`
 
 Besides expressions, there are a handful of useful numeric modules that ship with Python—**modules** are just packages of additional tools that we import to use:
 ````python
@@ -107,11 +118,10 @@ random.random()
 random.choice([3456,2,23,5]) #pass any iterable
 23
 ````
-
 [[strings]]:
-Strings are also **sequence**, i.e.  a **positionally** ordered collection of other objects.
+Strings are **sequences**, i.e.  a **positionally** ordered collection of other objects.
 Other types of sequences include lists and tuples. 
-**NOTE:** Sets aren't sequences - they have no order and they can't be indexed via `set[index]` - they even don't have any kind of notion of indices. (They are `iterable`, though - you can iterate over their items.)
+**NOTE:** Sets aren't sequences - they have no order and they can't be indexed via `set_variable[index]` - they even don't have any kind of notion of indices. (They are `iterable`, though - you can iterate over their items.)
 
 **Negative indexes are nothing but len(sequence) + the negative number,** i.e.
 ````python
@@ -123,7 +133,7 @@ m
 ````
 Notice that we can use an arbitrary expression in the square brackets, not just a hard-coded number literal—**anywhere that Python expects a value, we can use a literal, a variable, or any expression.**
 
-slicing is another way of indexing. `X[I:J]` returns everything in X from offset(index) I to (J-1). that is J is not included.
+**slicing** is another way of indexing. `X[I:J]` returns everything in X from offset(index) I to (J-1). that is J is not included.
 `print(S[1:3]) # returns 'pa'`
 In a slice, the left bound defaults to zero, and the right bound defaults to the length of the sequence being sliced.
 `S[:]` essentially is a copy of S string. BUT AS WE WILL LEARN LATER, THERE IS NO NEED TO CREATE A COPY IN CASE OF STRINGS. 
@@ -149,7 +159,7 @@ Every string operation is defined to produce a new string as its result, because
 TypeError: 'str' object does not support item assignment
 
 ````
-Every object in Python is classified as either immutable (unchangeable) or not. In terms of the core types, **numbers, strings, and tuples are immutable**; **lists and dictionaries are not** (they can be changed in-place freely). Among other things, immutability can be used to guarantee that an object remains constant throughout your program.
+Every object in Python is classified as either immutable (unchangeable) or not. In terms of the core types, **numbers, strings, and tuples are immutable**; **lists and dictionaries are not** (they can be changed in-place freely). Among other things, **immutability can be used to guarantee that an object remains constant throughout your program.**
 
     # len() fxn can be applied on any iterables, i.e. str,list, tuple,set, etc. i.e. it is
     a general tool not something exclusive to strings only. what is exclusive to an object, 
@@ -236,11 +246,11 @@ To do [[Regular expressions (regex patterns)]] (pattern matching in Python), we 
 `>>>import re`
 Pattern matching is not covered in Mark Lutz book. It is a fairly advanced concept but an essential one to learn. 
 
-Special characters can be represented as backslash escape sequences:
+Special characters can be represented in a string as backslash escape sequences:
 `\n is a end-of-line, \t is tab`
 
 
-[[lists]]
+[[lists]]:
 - are the most general sequence provided by the python language. this also means they support all operations of sequences we studied above for strings. ie., item assignment by offset, slicing, concatenation, repetition.
 - are mutable, i.e., can be changed in place by assignment to offset or list method calls.
 ### list methods:
@@ -251,7 +261,7 @@ Special characters can be represented as backslash escape sequences:
 
 **NOTE:** since lists are mutable objects, most list methods change the list object *in-place*, instead of creating a new one.
 
-NOTE: to delete an item at an index of a list you can of course use the list methods `.pop()` and `.remove()` but you can also use python's del operator. 
+NOTE: to delete an item at an index of a list you can of course use the list methods `.pop()` and `.remove()` but you can also use python's `del` operator. 
 ```
 >>>a = [5,8,2]
 >>>del(a[1]) #removes 8 from the list
@@ -259,13 +269,16 @@ NOTE: to delete an item at an index of a list you can of course use the list met
 ```
 Lists also support nesting. and can go as deep as you want.
 Stringing together index operations takes us deeper and deeper into our nested-object structure.
+ex: `M = [[4,5,6], [8,7,1]]`
+`>>>M[1][2]`
+`1`
 
-list comprehension expression:
+**list comprehension expression:**
 - coded in square brackets
 **List comprehensions make new lists of results, but they can be used to iterate over any iterable object.**
 List comprehensions are an optional feature, but they tend to be handy in practice and often provide a substantial processing speed advantage. 
 
-comprehension syntax in parentheses can also be used to create ***generators*** that produce results on demand (the sum built-in, for instance, sums items in a sequence):
+comprehension syntax in parentheses can also be used to create ***generators*** that produce results on demand:
 ````python
 matrix = [[1,2,3],
           [4,5,6],
@@ -297,14 +310,161 @@ print(g)
 [51,107,29]
 ```
 
-Comprehension syntax can also be used to create sets and dictionaries
+Comprehension syntax can also be used to create sets and dictionaries by changing the bracket correspondingly. 
 
-[[dictionary]]
+[[dictionary]]:
+Dictionaries are NOT sequences at all (they do not maintain a left to right order).
+Dictionaries are mapping.
+Dictionaries are mutable and can grow and shrink on demand. 
+````python
+>>>D = {'food': 'samosa', 'quantity': 4, 'color': 'yellow'}
+>>>D['country'] = 'India'
+>>>D
+{'food': 'samosa', 'quantity': 4, 'color': 'yellow', 'country': 'India'}
+````
+In other applications, dictionaries can also be used to replace searching operations—indexing a dictionary by key is often the fastest way to code a search in Python.
+
+In Python, when we lose the last reference to the object—by assigning its variable to something else, for example—all of the memory space occupied by that object’s structure is automatically cleaned up. Technically speaking, Python has a feature known as garbage collection that cleans up unused memory as your program runs and frees you from having to manage such details in your code. In Python, the space is reclaimed immediately, as soon as the last reference to an object is removed.
 
 ```
 >>>sorted(dict_object) #returns a sorted list of the keys of the dictionary
+>>>sorted(D)
+['color', 'country', 'food', 'quantity']
+
 ```
 
+If a key does not exist in a dictionary and you try to fetch it, ex: 
+````python
+>>>D['city']
+KeyError: 'city'
+
+>>> 'city' in D # membership check of a key in a dictionary
+False
+>>>print(D.get('city', 0)) #.get() method is a nice way to fetch a key if it exists else fetch a default value
+0
+# OR
+>>>value = D['city'] if 'city' in D else 0
+>>>value
+0
+````
+
+
+**Python `for loop`:**
+A simple and efficient way to step through all the items in a sequence.
+The for loop, and its more general cousin the while loop, are the main ways we code
+**repetitive** tasks as statements in our scripts. 
+Python’s `while loop` is a more general sort of looping tool, not limited to stepping across
+sequences:
+
+The `list comprehension`, though, and related functional programming tools like `map`
+and `filter`, will generally run faster than a `for loop` today (perhaps even twice as fast)—
+a property that could matter in your programs for large data sets. 
+
+**NOTE: A major rule of thumb in Python is to code for simplicity and readability first and worry about performance later, after your program is working, and after you’ve proved that
+there is a genuine performance concern.**
+
+[[tuple]]:
+The tuple object (pronounced “toople” or “tuhple,”  is roughly like a list that cannot be changed—tuples are **sequences**, like lists, but they are **immutable**, like strings. Syntactically, they are coded in **parentheses** instead of square brackets, and they support arbitrary types, arbitrary nesting, and the usual sequence operations.
+`T = (1, 5.67, [8,7], 'rty')`
+Tuples also have two type-specific callable methods in Python 3.0, but not nearly as
+many as lists:
+````python
+>>>T = (1, 5.67, [8,7], 'rty')
+>>>T.index(5.67) # gives ValueError if value not present in tuple.
+1
+>>>T.count(5.67) #returns no. of occurences. 0 if value not present
+1
+````
+
+**Frankly, tuples are not generally used as often as lists in practice, but their immutability is the whole point. If you pass a collection of objects around your program as a list, it can be changed anywhere; if you use a tuple, it cannot. That is, tuples provide a sort of integrity constraint that is convenient in programs larger than those we’ll write here.**
+
+[[files]]:
+File objects are Python code’s main interface to external files on your computer.
+````python
+>>>f = open('file_created_in_python', 'w') # write mode
+>>>f.write('my name is abhi.\n')
+>>>f.write('this is good.\n')
+>>>f.close() # writes the buffers to disk
+
+>>>f = open('file_created_in_python', 'r') # read mode, default argument
+>>>content = f.read()
+>>>print(content)
+my name is abhi.
+this is good.
+
+````
+A file’s contents are always a string in your script, regardless of the type of data the file contains.
+**NOTE:** in open() function, you can pass full file path if your file is in a specific directory.
+
+Later in the book, we’ll also see that files in Python 3.0 draw a sharp distinction between
+**text** and **binary** data. **Text** files represent content as **strings** and perform **Unicode** en-coding and decoding automatically, while binary files represent content as a special **bytes string** type and allow you to access file content unaltered.
+Although you won’t generally need to care about this distinction if you deal only with
+ASCII text, Python 3.0’s strings and files are an asset if you deal with internationalized
+applications or byte-oriented data.
+
+[[sets]]:
+sets are neither mappings or sequences. But, they are a **unordered collection** of **unique immutable objects**. 
+````python
+>>>w = {5,'rt'}
+>>>type(w)
+<class 'set'>
+>>>w = {5, 'rt', [4,3]} #this is not allowed as set elements can only be immutable objects.
+TypeError: unhashable type: 'list'
+# another way to create sets is using the set() built-in function
+>>>set(<pass_any_sequnce>) #you can pass a dictionary too which is not a sequence but in this case it will create a set of all the KEYS of the dictionary. 
+````
+Python Sets support the usual mathematical set operations.
+````python
+>>> X = {'s', 'p', 'a', 'm'}
+>>> Y = {'h', 'a', 'm'}
+>>> X & Y # intersection
+{'m', 'a'}
+>>> X | Y # union
+{'m', 's', 'a', 'h', 'p'}
+>>> X - Y # difference
+{'s', 'p'}
+
+````
+
+---
+Python also supports `booleans` (True and False) and `None` which is used as a placeholder to initialize names and objects. 
+````python
+>>>X = None
+>>>type(X)
+<class 'NoneType'>
+>>>e = True
+>>>type(e)
+<class 'bool'>
+````
+
+**`type` object:**
+The type object, returned by the type built-in function, is an object that gives the type of another object.
+`>>>type(type('abhi'))`
+`<class 'type'>`
+The practical application of this is that it allows code to check the types of the objects it processes. In fact, there are at least three ways to do so in a Python script, see `python_obj_types.py`
+
+However, doing so is almost always the wrong thing to do in a Python program (and often a sign of an ex-C programmer first starting to use Python!). The reason why won’t become completely clear until later in the book, when we start writing larger code units such as functions, but it’s a (perhaps the) core Python concept. By checking for specific types in your code, you effectively break its flexibility—you limit it to working on just one type. Without such tests, your code may be able to work on a whole range of types.
+
+This is related to the idea of **polymorphism** mentioned earlier, and it stems from Python’s lack of type declarations. As you’ll learn, in Python, we code to object inter-faces  operations supported), not to types.
+Not caring about specific types means that code is automatically applicable to many of them—any object with a compatible interface will work, regardless of its specific type. Although type checking is supported— and even required, in some rare cases—you’ll see that it’s not usually the “Pythonic” way of thinking. In fact, you’ll find that polymorphism is probably the key idea behind using Python well.
+
+**user-defined types:**
+We’ll study *object-oriented programming* in Python—an optional but powerful feature
+of the language that cuts development time by supporting programming by customization later.
+````python
+class Worker:
+    def __init__(self, name, pay): #initialize when created
+        self.name = name  # self is the new object
+        self.pay = pay
+    def lastName(self):
+        return self.name.split()[-1]
+    def giveRaise(self, percent):
+        self.pay *= (1.0 + percent)
+````
+In abstract terms, though, classes define new types of objects that extend the core set.
+The larger story of classes is that their inheritance mechanism supports software hierarchies that lend themselves to customization by extension. We extend software by
+writing new classes, not by changing what already works. You should also know that classes are an optional feature of Python, and simpler built-in types such as lists and
+dictionaries are often better tools than user-coded classes. 
 
 
 

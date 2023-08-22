@@ -1,14 +1,6 @@
 {
   "scanned": true,
-  "reminders": {
-    "MAP-to-follow.md": [
-      {
-        "title": "Mark Lutz - Part I-V",
-        "time": "2023-05-21 19:30",
-        "rowNumber": 9
-      }
-    ]
-  },
+  "reminders": {},
   "debug": false,
   "settings": {
     "reminderTime": "09:00",
