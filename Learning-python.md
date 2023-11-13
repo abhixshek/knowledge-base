@@ -20,7 +20,7 @@ Python is used heavily in systems programming(system administration tasks such a
 It is also used for internet scripting, web development, game development, numeric programming, component integration, etc.
 
 ## Python's view of program execution:
-`$` or `%`  or `C:\Python3>` are all examples of system prompt. 
+`$` or `%`  or `C:\Python3>` are all examples of **system prompt**. 
 your **source code** (the text statements in your .py file) is first converted to **byte code** and then routed to something called a "virtual machine".
 
 **Compilation is simply a translation step, and byte code is a lower-level, platform-independent representation of your source code.**
