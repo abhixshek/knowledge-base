@@ -1,6 +1,8 @@
 Python is a popular open source programming language used for both standalone programs and
 scripting applications in a wide variety of domains.
 
+It was created or developed by Guido Van Rossum and released first on February 20, 1991.
+
 C, C++ and Java are **compiled or statically typed** programming languages. 
 
 Why people use python? - software quality, developer productivity, portability, support libraries, integration with other tools, fun, etc. 
